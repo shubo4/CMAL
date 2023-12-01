@@ -337,4 +337,4 @@ if __name__ == '__main__':
              resume=  False, #args.resume,          # resume training from checkpoint
              start_epoch= 0 ,#args.start_epoch      # the start epoch number when you resume the training
              model_path='.', #args.model_path,
-             data_path = args.trian_path)         # the saved model where you want to resume the training
+             data_path = args.train_path)         # the saved model where you want to resume the training
