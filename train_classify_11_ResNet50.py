@@ -320,13 +320,13 @@ def train(nb_epoch, batch_size, store_name, resume=False, start_epoch=0, model_p
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('train_path', type=str, default='.'         help='path to train directory')
-    parser.add_argument('epochs',     type=int, default = 200,      help='epochs to run for')
-    parser.add_argument('batch_size', type=int, default= 10,        help='batch size')
-    parser.add_argument('output_path',type=str, default= './outputs'help='output directory')
-    parser.add_argument('resume',     type=bool,default=False,      help='resume training from checkpoint')
-    parser.add_argument('start_epoch',type=int, default=0 ,         help='epoch to resume training from')
-    parser.add_argument('model_path', type=str, default = '.',      help='the saved model path when you want to resume the training')
+    parser.add_argument('train_path', type=str, default='.',         help='path to train directory')
+    parser.add_argument('epochs',     type=int, default = 200,       help='epochs to run for')
+    parser.add_argument('batch_size', type=int, default= 10,         help='batch size')
+    parser.add_argument('output_path',type=str, default= './outputs',help='output directory')
+    parser.add_argument('resume',     type=bool,default=False,       help='resume training from checkpoint')
+    parser.add_argument('start_epoch',type=int, default=0 ,          help='epoch to resume training from')
+    parser.add_argument('model_path', type=str, default = '.',       help='the saved model path when you want to resume the training')
     
     args = parser.parse_args()
 
