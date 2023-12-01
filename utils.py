@@ -130,7 +130,7 @@ def test(net, criterion, batch_size, test_path):
     device = torch.device("cuda")
 
     transform_test = transforms.Compose([
-        transforms.Scale((550, 550)),
+        transforms.Resize((550, 550)),
         transforms.CenterCrop(448),
         transforms.ToTensor(),
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
