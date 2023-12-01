@@ -325,8 +325,8 @@ if __name__ == '__main__':
     parser.add_argument('batch_size', type=int, default= 10,         help='batch size')
     parser.add_argument('output_path',type=str, default= './outputs',help='output directory')
     parser.add_argument('resume',     type=bool,default=False,       help='resume training from checkpoint')
-    parser.add_argument('start_epoch',type=int, default=0 ,          help='epoch to resume training from')
-    parser.add_argument('model_path', type=str, default = '.',       help='the saved model path when you want to resume the training')
+    #parser.add_argument('start_epoch',type=int, default=0 ,          help='epoch to resume training from')
+    #parser.add_argument('model_path', type=str, default = '.',       help='the saved model path when you want to resume the training')
     
     args = parser.parse_args()
 
@@ -335,6 +335,6 @@ if __name__ == '__main__':
              batch_size = args.batch_size,         # batch size
              store_name = args.output_path,     # folder for output
              resume=args.resume,          # resume training from checkpoint
-             start_epoch=args.start_epoch,         # the start epoch number when you resume the training
-             model_path=args.model_path,
+             start_epoch= 0 ,#args.start_epoch      # the start epoch number when you resume the training
+             model_path='.', #args.model_path,
              data_path = args.trian_path)         # the saved model where you want to resume the training
