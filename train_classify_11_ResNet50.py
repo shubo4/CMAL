@@ -139,7 +139,7 @@ def train(nb_epoch, batch_size, store_name, resume=False, start_epoch=0, model_p
         transforms.ToTensor(),
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
     ])
-    trainset = torchvision.datasets.ImageFolder(root=data_path+'/train', transform=transform_train)
+    trainset = torchvision.datasets.ImageFolder(root=data_path+'train 2/train', transform=transform_train)
     trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=True, num_workers=4)
 
 
@@ -303,7 +303,7 @@ def train(nb_epoch, batch_size, store_name, resume=False, start_epoch=0, model_p
                 train_loss4 / (idx + 1), train_loss5 / (idx + 1)))
 
         if epoch < 5 or epoch >= 100:
-            val_acc_com, val_loss = test(net, CELoss, 3, data_path+'/test')
+            val_acc_com, val_loss = test(net, CELoss, 3, data_path+'test 2/test')
             if val_acc_com > max_val_acc:
                 max_val_acc = val_acc_com
                 net.cpu()
