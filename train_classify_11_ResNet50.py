@@ -302,7 +302,7 @@ def train(nb_epoch, batch_size, store_name, resume=False, start_epoch=0, model_p
                 epoch, train_acc, train_loss, train_loss1 / (idx + 1), train_loss2 / (idx + 1), train_loss3 / (idx + 1),
                 train_loss4 / (idx + 1), train_loss5 / (idx + 1)))
 
-        if epoch < 5 or epoch >= 100:
+        if epoch < 5 or epoch == 35 or epoch==40:
             val_acc_com, val_loss = test(net, CELoss, 3, data_path+'test 2/test')
             if val_acc_com > max_val_acc:
                 max_val_acc = val_acc_com
@@ -321,7 +321,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--train_path', type=str, help='path to train directory')
-    #parser.add_argument('epochs',     type=int, default = 200,       help='epochs to run for')
+    parser.add_argument('--epochs',     type=int, default = 50,       help='epochs to run for')
     #parser.add_argument('batch_size', type=int, default= 10,         help='batch size')
     #parser.add_argument('output_path',type=str, default= './outputs',help='output directory')
     #parser.add_argument('resume',     type=bool,default=False,       help='resume training from checkpoint')
@@ -331,7 +331,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-    train(nb_epoch =  20, #args.epochs,             # number of epoch
+    train(nb_epoch =  args.epochs, #args.epochs,             # number of epoch
              batch_size = 16, #args.batch_size,         # batch size
              store_name = './outputs', #args.output_path,     # folder for output
              resume=  False, #args.resume,          # resume training from checkpoint
