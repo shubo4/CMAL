@@ -143,15 +143,19 @@ def train(nb_epoch, batch_size, store_name, resume=False, start_epoch=0, model_p
     trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=True, num_workers=4)
 
 
-    net = torchvision.models.resnet50()
-    state_dict = load_state_dict_from_url('https://download.pytorch.org/models/resnet50-19c8e357.pth')
-    net.load_state_dict(state_dict)
+    if not resume:
+        net = torchvision.models.resnet50()
+        state_dict = load_state_dict_from_url('https://download.pytorch.org/models/resnet50-19c8e357.pth')
+        net.load_state_dict(state_dict)
+    
+        net_layers = list(net.children())
+        net_layers = net_layers[0:8]
+        net = Network_Wrapper(net_layers, 11)
+    
+        netp = torch.nn.DataParallel(net, device_ids=[0])
 
-    net_layers = list(net.children())
-    net_layers = net_layers[0:8]
-    net = Network_Wrapper(net_layers, 11)
-
-    netp = torch.nn.DataParallel(net, device_ids=[0])
+    else: 
+        net = torch.load(model_path)
 
 
     #device = torch.device("cuda")                          ## I added option for cpu training here
